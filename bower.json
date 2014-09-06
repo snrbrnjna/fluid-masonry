@@ -1,0 +1,32 @@
+{
+  "name": "fluid-masonry",
+  "version": "1.0.0",
+  "description": "A cascading grid layout library extending masonry (by david desandro) by filling up the container in its full width",
+  "main": "fluid-masonry.js",
+  "dependencies": {
+    "masonry": "^3.1.5",
+    "outlayer": "^1.2.0"
+  },
+  "devDependencies": {
+    "jquery": null,
+    "imagesloaded": null,
+    "requirejs": null
+  },
+  "ignore": [
+    "examples/",
+    "CONTRIBUTING.mdown",
+    "Gruntfile.js",
+    "package.json",
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "homepage": "https://github.com/snrbrnjna/fluid-masonry",
+  "keywords": [
+    "masonry",
+    "fluid",
+    "full width",
+    "layout",
+    "outlayer"  ],
+  "license": "MIT"
+}
