@@ -32,4 +32,4 @@ Install with [Bower :bird:](http://bower.io) `bower install fluid-masonry`.
 
 ## License
 
-modified [MIT license](/licencse.md).
+modified [MIT license](/license.md).
