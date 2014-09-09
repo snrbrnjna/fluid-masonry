@@ -1,5 +1,5 @@
 /*!
- * Fluid Masonry PACKAGED v1.0.0
+ * Fluid Masonry PACKAGED v1.0.1
  * extends the cascading grid layout library of
  * http://masonry.desandro.com by filling up the container in its full width.
  * MIT License
@@ -2887,7 +2887,7 @@ if ( typeof define === 'function' && define.amd ) {
 })( window );
 
 /*!
- * Fluid Masonry v1.0.0
+ * Fluid Masonry v1.0.1
  * extends the cascading grid layout library of
  * http://masonry.desandro.com by filling up the container in its full width.
  * MIT License
@@ -2930,13 +2930,31 @@ function fluidMasonryDefinition( Outlayer, Masonry ) {
     // get container width
     this.getContainerWidth();
 
+    // Workaround: isFitWidth mode doesn't respect padding and border of the item container
+    // when meassuring the container width - it meassures only the parent of the container. 
+    // When laying out the items, these values are used, so we have to substract 
+    // their width, when calculating the column width.
+    if (this.options.isFitWidth) {
+      this.containerWidth = this.containerWidth - (
+        this.size.paddingLeft + this.size.paddingRight + 
+        this.size.borderLeftWidth + this.size.borderRightWidth
+      );
+    }
+
     // how many columns?
     this.cols = Math.floor( ( this.containerWidth + this.gutter ) / this.minColumnWidth );
     this.cols = Math.max( this.cols, 1 );
 
     // do we have more (or even less [=> restWidth negativ]) space?
     var restWidth = this.containerWidth + this.gutter - this.cols*this.minColumnWidth;
-    this.columnWidth = this.minColumnWidth + (restWidth/this.cols);
+    var restWidthPerColumn = restWidth/this.cols;
+
+    // what to do with the rounding error?
+    // we add it on the left and right side of the container - unless we serve isFitWidth
+    var roundingError = (restWidthPerColumn - Math.floor(restWidthPerColumn))*this.cols;
+    this.centeringOffset = this.options.isFitWidth ? 0 : Math.round(roundingError/2);
+
+    this.columnWidth = this.minColumnWidth + Math.floor(restWidthPerColumn);
     this.columnWidthInner = this.columnWidth - this.gutter;
   };
 
@@ -2970,7 +2988,7 @@ function fluidMasonryDefinition( Outlayer, Masonry ) {
 
     // position the brick
     var position = {
-      x: this.columnWidth * shortColIndex,
+      x: this.columnWidth * shortColIndex + this.centeringOffset,
       y: minimumY
     };
 

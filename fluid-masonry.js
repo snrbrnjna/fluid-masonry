@@ -1,5 +1,5 @@
 /*!
- * Fluid Masonry v1.0.0
+ * Fluid Masonry v1.0.1
  * extends the cascading grid layout library of
  * http://masonry.desandro.com by filling up the container in its full width.
  * MIT License

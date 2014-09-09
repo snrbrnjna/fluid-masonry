@@ -1,6 +1,6 @@
 {
   "name": "fluid-masonry",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A cascading grid layout library extending masonry (by david desandro) by filling up the container in its full width",
   "main": "fluid-masonry.js",
   "dependencies": {
