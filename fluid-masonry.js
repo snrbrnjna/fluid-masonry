@@ -42,6 +42,17 @@ function fluidMasonryDefinition( Outlayer, Masonry ) {
     // get container width
     this.getContainerWidth();
 
+    // Workaround: isFitWidth mode doesn't respect padding and border of the item container
+    // when meassuring the container width - it meassures only the parent of the container. 
+    // When laying out the items, these values are used, so we have to substract 
+    // their width, when calculating the column width.
+    if (this.options.isFitWidth) {
+      this.containerWidth = this.containerWidth - (
+        this.size.paddingLeft + this.size.paddingRight + 
+        this.size.borderLeftWidth + this.size.borderRightWidth
+      );
+    }
+
     // how many columns?
     this.cols = Math.floor( ( this.containerWidth + this.gutter ) / this.minColumnWidth );
     this.cols = Math.max( this.cols, 1 );
