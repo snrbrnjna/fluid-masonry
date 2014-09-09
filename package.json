@@ -22,6 +22,7 @@
   "homepage": "https://github.com/snrbrnjna/fluid-masonry",
   "devDependencies": {
     "grunt": "^0.4.4",
+    "grunt-bump": "0.0.15",
     "grunt-contrib-jshint": "^0.9.2",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-requirejs": "^0.4.1"
