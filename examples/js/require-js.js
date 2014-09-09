@@ -71,7 +71,8 @@ requirejs( [
       $container.fluidMasonry({
         minColumnWidth: '.grid-sizer',
         gutter: '.gutter-sizer',
-        itemSelector: '.photo'
+        itemSelector: '.photo',
+        // isFitWidth: true
       });
     });
   }

@@ -1,3 +1,2 @@
-.photos {padding: 10px;}
-
-.photos .photo img {max-width: 100%; max-height: 100%;}
+.photos {background: #ddd;}
+.photos .photo img {max-width: 100%;}

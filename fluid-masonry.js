@@ -48,7 +48,14 @@ function fluidMasonryDefinition( Outlayer, Masonry ) {
 
     // do we have more (or even less [=> restWidth negativ]) space?
     var restWidth = this.containerWidth + this.gutter - this.cols*this.minColumnWidth;
-    this.columnWidth = this.minColumnWidth + (restWidth/this.cols);
+    var restWidthPerColumn = restWidth/this.cols;
+
+    // what to do with the rounding error?
+    // we add it on the left and right side of the container - unless we serve isFitWidth
+    var roundingError = (restWidthPerColumn - Math.floor(restWidthPerColumn))*this.cols;
+    this.centeringOffset = this.options.isFitWidth ? 0 : Math.round(roundingError/2);
+
+    this.columnWidth = this.minColumnWidth + Math.floor(restWidthPerColumn);
     this.columnWidthInner = this.columnWidth - this.gutter;
   };
 
@@ -82,7 +89,7 @@ function fluidMasonryDefinition( Outlayer, Masonry ) {
 
     // position the brick
     var position = {
-      x: this.columnWidth * shortColIndex,
+      x: this.columnWidth * shortColIndex + this.centeringOffset,
       y: minimumY
     };
 

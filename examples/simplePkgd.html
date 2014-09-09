@@ -1,0 +1,89 @@
+ <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>pure masonry</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+      .photos {padding: 8px 8px 0;}
+      .grid-sizer {width: 100px;}
+      .gutter-sizer {width: 8px;}
+      .photo {margin-bottom: 8px; height: 100px; background: green;}
+      .photo.v2 {height: 120px; background: orange;}
+      .photo.v3 {height: 100px; background: pink;}
+      .photo.v4 {height: 100px; background: dodgerblue;}
+    </style>
+
+</head>
+<body>
+
+
+<div class="content">
+  <h1>use packaged script</h1>
+</div>
+
+<div class="photos">
+  <div class="grid-sizer"></div>
+  <div class="gutter-sizer"></div>
+
+  <div class="photo portrait"></div>
+  <div class="photo portrait v2"></div>
+  <div class="photo portrait v4"></div>
+  <div class="photo portrait v3"></div>
+  <div class="photo portrait"></div>
+  <div class="photo landscape v4" data-columns="2"></div>
+  <div class="photo portrait v2"></div>
+  <div class="photo portrait"></div>
+  <div class="photo portrait v2"></div>
+  <div class="photo portrait v3"></div>
+  <div class="photo portrait"></div>
+  <div class="photo landscape v4" data-columns="2"></div>
+  <div class="photo portrait"></div>
+  <div class="photo landscape v2" data-columns="2"></div>
+  <div class="photo portrait"></div>
+  <div class="photo portrait v3"></div>
+  <div class="photo portrait v4"></div>
+  <div class="photo portrait v2"></div>
+  <div class="photo portrait"></div>
+  <div class="photo portrait v3"></div>
+  <div class="photo portrait v2"></div>
+  <div class="photo portrait"></div>
+  <div class="photo portrait v4"></div>
+  <div class="photo landscape v2" data-columns="2"></div>
+  <div class="photo portrait"></div>
+  <div class="photo portrait v3"></div>
+  <div class="photo portrait v4"></div>
+  <div class="photo portrait v2"></div>
+  <div class="photo portrait"></div>
+</div>
+
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/imagesloaded/imagesloaded.pkgd.js"></script>
+
+<script src="../dist/fluid-masonry.pkgd.js"></script>
+
+<script type="text/javascript">
+  $(function(event) {    
+    $container = $('.photos').imagesLoaded(function() {
+      $container.fluidMasonry({
+        minColumnWidth: '.grid-sizer',
+        gutter: '.gutter-sizer',
+        itemSelector: '.photo'
+      });
+    });  
+  });
+</script>
+
+
+</body>
+</html>
